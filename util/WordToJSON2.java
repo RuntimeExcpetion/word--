@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * 将解析后的
  *
- * @author root
+ * @author mayiweiguishi
  */
 public class WordToJSON2 {
     /**
