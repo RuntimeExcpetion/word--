@@ -19,7 +19,9 @@ public class WordToJSON2 {
      * 试题序号
      */
     private final static Pattern NUMBER = Pattern.compile("[\\d+]\\. ");
-
+    /**
+     * 试题选项
+     */
     private final static Pattern OPTIONS = Pattern.compile("[a-zA-Z]\\. ");
 
     private final static Pattern SUB_ITEM = Pattern.compile("\\(\\d+\\) ");
@@ -53,6 +55,11 @@ public class WordToJSON2 {
      * 选项位置
      */
     private ArrayDeque<Integer> options = new ArrayDeque();
+    
+    /**
+     * 默认分数
+     */
+    private final static String DEFAULT_SOCRE = "5";
 
     /**
      * 返回解析后生成的试卷集合
@@ -101,7 +108,7 @@ public class WordToJSON2 {
             return;
         }
         int index = topics.peekFirst();
-        String score = "5";
+        String score = null;
         if (index != 0) {
             score = doParseScore(text.substring(0, index));
         }
@@ -147,7 +154,7 @@ public class WordToJSON2 {
         if (parseMatcher.find()) {
             index = parseMatcher.end();
         }
-        return index == 0 ? "5" : text.substring(index).trim();
+        return index == 0 ? DEFAULT_SOCRE : text.substring(index).trim();
     }
 
     private int doParseOptions(String text) {
