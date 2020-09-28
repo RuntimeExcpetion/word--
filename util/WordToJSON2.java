@@ -83,10 +83,10 @@ public class WordToJSON2 {
     private void doParseType(String word) {
         Matcher matcherStart = TYPE_START.matcher(word);
         Matcher matcherEnd = TYPE_END.matcher(word);
+        int start;
+        int end;
+        short type;
         while (matcherStart.find() && matcherEnd.find()) {
-            int start;
-            int end;
-            short type;
             for (int i = 0; i < matcherStart.groupCount(); i++) {
                 if ((start = matcherStart.end(i + 1)) != -1) {
                     if ((end = matcherEnd.start(i + 1)) == -1) {
